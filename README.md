@@ -15,17 +15,17 @@ Ask Claude about any design decision and get recommendations grounded in Apple H
 
 ## Setup
 
-Copy the skill folders into your project's `.cursor/skills/` directory:
+Copy the skill folders into your project's skills directory:
 
 ```
-.cursor/skills/
+your-project/
   hig/
   hig-foundations/
   hig-patterns/
   hig-components/
 ```
 
-That's it. Start asking.
+These skills assume your project has a `design.md` file they can reference and evolve. If you don't have one, you can tweak the skills to skip that part — or just use them as-is and see what happens.
 
 ## Examples
 
