@@ -1,12 +1,12 @@
 ---
 name: design-review
-description: The entry point for improving existing UI. Diagnoses design problems, picks the right specialized skills, presents findings and a plan, then executes. Use when the user wants to review, improve, fix, polish, or harden something that already exists. For designing new things, use /hig instead.
+description: The entry point for improving existing UI. Diagnoses design problems, picks the right specialized skills, presents findings and a plan, then executes. Use when the user wants to review, improve, fix, polish, or harden something that already exists. For designing new things, use /design instead.
 user-invocable: true
 ---
 
 The entry point for improving existing UI. Use `/design-review` when something already exists and needs to get better — whether that's a full page, a single component, or the whole system.
 
-For designing new things, use `/hig` instead — it gives you HIG-grounded guidance for what you're building.
+For designing new things, use `/design` instead — it gives you HIG-grounded guidance for what you're building.
 
 ## Process
 

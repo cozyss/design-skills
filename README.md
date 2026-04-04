@@ -4,7 +4,7 @@ Claude Code and Cursor skills for making web apps that feel considered.
 
 There are two commands you need to know:
 
-- **`/hig`** — for designing new things
+- **`/design`** — for designing new things
 - **`/design-review`** — for improving existing things
 
 Everything else is wired up behind them. You don't need to memorize 20+ skills — just use the right entry point and it handles the rest.
@@ -22,7 +22,7 @@ npx skills add cozyss/design-skills
 Or pick specific ones:
 
 ```
-npx skills add cozyss/design-skills --skill hig --skill design-review
+npx skills add cozyss/design-skills --skill design --skill design-review
 ```
 
 Skills live in `.claude/skills/` and `.cursor/skills/` so both editors find them automatically.
@@ -37,15 +37,15 @@ Skills live in `.claude/skills/` and `.cursor/skills/` so both editors find them
 
 This generates a `design.md` with HIG-aligned tokens and specs — colors, typography, spacing, components, everything. It asks about your product first so the system fits what you're building.
 
-### 2. Design new things with `/hig`
+### 2. Design new things with `/design`
 
 ```
-/hig should this button be filled or outlined?
-/hig how should navigation work on mobile?
-/hig what component should I use for this settings page?
+/design should this button be filled or outlined?
+/design how should navigation work on mobile?
+/design what component should I use for this settings page?
 ```
 
-`/hig` gives you recommendations grounded in Apple's Human Interface Guidelines, then proposes updates to `design.md` so the decision sticks. It routes to the right specialist behind the scenes — foundations, patterns, or components — you don't need to think about which one.
+`/design` gives you recommendations grounded in Apple's Human Interface Guidelines, then proposes updates to `design.md` so the decision sticks. It routes to the right specialist behind the scenes — foundations, patterns, or components — you don't need to think about which one.
 
 ### 3. Improve existing things with `/design-review`
 
@@ -59,9 +59,9 @@ This generates a `design.md` with HIG-aligned tokens and specs — colors, typog
 
 ## What's Under the Hood
 
-You don't need to call these directly — `/hig` and `/design-review` route to them — but here's what's available if you ever want to go straight to a specific one.
+You don't need to call these directly — `/design` and `/design-review` route to them — but here's what's available if you ever want to go straight to a specific one.
 
-### Design System (behind `/hig`)
+### Design System (behind `/design`)
 
 | | |
 |---|---|
@@ -101,11 +101,11 @@ The review and refinement skills are synced from [pbakaus/impeccable](https://gi
 bash scripts/sync-upstream.sh
 ```
 
-The sync only touches skills that came from impeccable — it never overwrites the HIG skills or `design-review`.
+The sync only touches skills that came from impeccable — it never overwrites `/design`, `/design-review`, or the HIG sub-skills.
 
 ## Credits
 
-The review and refinement skills are from [pbakaus/impeccable](https://github.com/pbakaus/impeccable) by Paul Bakaus (Apache 2.0). The `frontend-design` skill in impeccable builds on [Anthropic's original](https://github.com/anthropics/skills/tree/main/skills/frontend-design). The HIG design system skills and `/design-review` are original to this repo. See [NOTICE](NOTICE) for full attribution.
+The review and refinement skills are from [pbakaus/impeccable](https://github.com/pbakaus/impeccable) by Paul Bakaus (Apache 2.0). The `frontend-design` skill in impeccable builds on [Anthropic's original](https://github.com/anthropics/skills/tree/main/skills/frontend-design). `/design`, `/design-review`, and the HIG sub-skills are original to this repo. See [NOTICE](NOTICE) for full attribution.
 
 ## License
 
