@@ -1,9 +1,11 @@
 ---
 name: hig
-description: Apply Apple Human Interface Guidelines to web design across desktop and mobile. Routes to specialized modules for foundations, patterns, or components. Use when the user wants to design, review, or improve UI with Apple design principles, or iteratively evolve the design system.
+description: The entry point for designing new things. Apply Apple Human Interface Guidelines to web design across desktop and mobile. Routes to specialized modules for foundations, patterns, or components. Use when the user is building something new, making a design decision, or evolving their design system. For improving existing UI, use /design-review instead.
 ---
 
-Apply Apple HIG principles to web design decisions. Routes to specialized modules, produces concise recommendations, and proposes `design.md` evolution where Apple's wisdom improves the system.
+The entry point for designing new things. Use `/hig` when you're building something, making a design decision, or need guidance on how something should work. Routes to specialized modules, produces concise recommendations, and proposes `design.md` evolution.
+
+For improving existing UI, use `/design-review` instead — it diagnoses what's wrong and fixes it.
 
 **Apple HIG leads. The design system follows.**
 

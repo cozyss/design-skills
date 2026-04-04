@@ -1,10 +1,12 @@
 ---
 name: design-review
-description: Master review skill that diagnoses design problems and routes to the right specialized skills. Analyzes what the user is asking, identifies the problem, recommends a solution, and invokes one or more sub-skills. Use when the user wants a general design review, asks to improve something without specifying how, or wants multiple aspects of their UI addressed.
+description: The entry point for improving existing UI. Diagnoses design problems, picks the right specialized skills, presents findings and a plan, then executes. Use when the user wants to review, improve, fix, polish, or harden something that already exists. For designing new things, use /hig instead.
 user-invocable: true
 ---
 
-Diagnose design problems and route to the right skills. This is the entry point when someone says "review this", "improve this", or describes a problem without knowing which specific skill to reach for.
+The entry point for improving existing UI. Use `/design-review` when something already exists and needs to get better — whether that's a full page, a single component, or the whole system.
+
+For designing new things, use `/hig` instead — it gives you HIG-grounded guidance for what you're building.
 
 ## Process
 
