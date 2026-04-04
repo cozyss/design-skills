@@ -1,6 +1,6 @@
 # Design Skills
 
-Claude Code skills for making web apps that feel considered.
+Claude Code and Cursor skills for making web apps that feel considered.
 
 Two things make these work: a `design.md` file that holds your design system, and a set of skills that know how to read it, advise you, and evolve it over time. You ask a design question, get a recommendation, approve it, and the decision gets written back. Your 50th question is informed by the first 49.
 
@@ -59,6 +59,7 @@ Don't know what's wrong or where to start? `/design-review` reads your UI, tells
 | | |
 |---|---|
 | `/design-review` | **Start here.** Reviews your UI, diagnoses problems, presents a plan, then executes on your go-ahead. |
+| `/frontend-design` | Design principles, anti-patterns, and context gathering. The shared foundation for all review skills. |
 | `/critique` | Deep UX evaluation with scoring, persona testing, and actionable feedback. |
 | `/audit` | Technical quality checks — accessibility, performance, theming, responsive, anti-patterns. |
 | `/normalize` | Find where your UI has drifted from the design system and bring it back in line. |
@@ -87,13 +88,6 @@ Push things further when "good" isn't enough.
 | `/delight` | Add personality, joy, and memorable touches. |
 | `/bolder` | Amplify safe designs — more impact, more character. |
 | `/overdrive` | Go all-out — shaders, spring physics, scroll-driven effects, 60fps everything. |
-
-### Calibration
-
-Dial the intensity up or down.
-
-| | |
-|---|---|
 | `/quieter` | Tone down overstimulating designs. Calmer, more refined. |
 
 ### Resilience
@@ -113,6 +107,20 @@ Make it production-ready.
 |---|---|
 | `/teach-impeccable` | One-time setup to gather design context and save it to your AI config. |
 
+## Keeping Skills Up to Date
+
+The review and refinement skills are synced from [pbakaus/impeccable](https://github.com/pbakaus/impeccable). A GitHub Action checks for upstream changes every Monday and opens a PR if anything's new. You can also sync manually:
+
+```
+bash scripts/sync-upstream.sh
+```
+
+The sync only touches skills that came from impeccable — it never overwrites the HIG skills or `design-review`.
+
 ## Credits
 
-The review and refinement skills are from [pbakaus/impeccable](https://github.com/pbakaus/impeccable). The HIG design system skills are original to this repo.
+The review, refinement, and enhancement skills are from [pbakaus/impeccable](https://github.com/pbakaus/impeccable) by Paul Bakaus (Apache 2.0). The `frontend-design` skill in impeccable builds on [Anthropic's original](https://github.com/anthropics/skills/tree/main/skills/frontend-design). The HIG design system skills and `/design-review` are original to this repo. See [NOTICE](NOTICE) for full attribution.
+
+## License
+
+Apache 2.0. See [LICENSE](LICENSE).
