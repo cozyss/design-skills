@@ -6,6 +6,8 @@ Two things make these work: a `design.md` file that holds your design system, an
 
 ## Install
 
+Works with Claude Code and Cursor out of the box.
+
 ```
 npx skills add cozyss/design-skills
 ```
@@ -15,6 +17,8 @@ Or pick specific ones:
 ```
 npx skills add cozyss/design-skills --skill hig --skill critique --skill polish
 ```
+
+Skills live in `.claude/skills/` and `.cursor/skills/` so both editors find them automatically.
 
 ## Getting Started
 
