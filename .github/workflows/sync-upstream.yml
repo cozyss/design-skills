@@ -1,0 +1,51 @@
+name: Sync upstream skills
+
+on:
+  schedule:
+    - cron: '23 9 * * 1' # Mondays at 9:23am UTC
+  workflow_dispatch: # Manual trigger from GitHub UI
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sync skills from pbakaus/impeccable
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash scripts/sync-upstream.sh
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create PR
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          branch="sync-upstream-$(date +%Y%m%d)"
+          git checkout -b "$branch"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Sync upstream skills from pbakaus/impeccable"
+          git push -u origin "$branch"
+          gh pr create \
+            --title "Sync upstream skills from impeccable" \
+            --body "$(cat <<'EOF'
+Automated sync of skills from [pbakaus/impeccable](https://github.com/pbakaus/impeccable).
+
+Review the diff to see what changed upstream.
+EOF
+          )"
