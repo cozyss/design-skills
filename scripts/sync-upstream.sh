@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Sync skills from pbakaus/impeccable into .claude/skills/ and .cursor/skills/
+# Sync skills from pbakaus/impeccable into source/skills/
 # Only touches skills that came from impeccable — never overwrites local originals.
+# After syncing, runs build.sh to copy to .claude/skills/ and .cursor/skills/.
 
 REPO="pbakaus/impeccable"
-SOURCE_PATH="source/skills"
-TARGETS=(.claude/skills .cursor/skills)
+REMOTE_PATH="source/skills"
+LOCAL_PATH="source/skills"
 
 # Skills that came from impeccable. Add new ones here if the upstream repo adds them.
 UPSTREAM_SKILLS=(
@@ -41,38 +42,32 @@ for skill in "${UPSTREAM_SKILLS[@]}"; do
   echo "  $skill"
 
   # Get list of files in this skill directory (recursive)
-  files=$(gh api "repos/$REPO/contents/$SOURCE_PATH/$skill" --jq '.[].name' 2>/dev/null || true)
+  files=$(gh api "repos/$REPO/contents/$REMOTE_PATH/$skill" --jq '.[].name' 2>/dev/null || true)
 
   if [[ -z "$files" ]]; then
     echo "    ⚠ not found upstream, skipping"
     continue
   fi
 
-  for target in "${TARGETS[@]}"; do
-    mkdir -p "$target/$skill"
-  done
+  mkdir -p "$LOCAL_PATH/$skill"
 
   for file in $files; do
     if [[ "$file" == "reference" ]]; then
       # Handle reference subdirectory
-      ref_files=$(gh api "repos/$REPO/contents/$SOURCE_PATH/$skill/reference" --jq '.[].name' 2>/dev/null || true)
-      for target in "${TARGETS[@]}"; do
-        mkdir -p "$target/$skill/reference"
-      done
+      ref_files=$(gh api "repos/$REPO/contents/$REMOTE_PATH/$skill/reference" --jq '.[].name' 2>/dev/null || true)
+      mkdir -p "$LOCAL_PATH/$skill/reference"
       for ref_file in $ref_files; do
-        content=$(gh api "repos/$REPO/contents/$SOURCE_PATH/$skill/reference/$ref_file" --jq '.content' | base64 -d)
-        for target in "${TARGETS[@]}"; do
-          echo "$content" > "$target/$skill/reference/$ref_file"
-        done
+        content=$(gh api "repos/$REPO/contents/$REMOTE_PATH/$skill/reference/$ref_file" --jq '.content' | base64 -d)
+        echo "$content" > "$LOCAL_PATH/$skill/reference/$ref_file"
       done
     else
-      content=$(gh api "repos/$REPO/contents/$SOURCE_PATH/$skill/$file" --jq '.content' | base64 -d)
-      for target in "${TARGETS[@]}"; do
-        echo "$content" > "$target/$skill/$file"
-      done
+      content=$(gh api "repos/$REPO/contents/$REMOTE_PATH/$skill/$file" --jq '.content' | base64 -d)
+      echo "$content" > "$LOCAL_PATH/$skill/$file"
     fi
   done
 done
 
 echo ""
+echo "Synced to source/skills/. Running build..."
+bash scripts/build.sh
 echo "Done. Check changes with: git diff --stat"

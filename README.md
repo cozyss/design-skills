@@ -93,6 +93,16 @@ You don't need to call these directly — `/design` and `/design-review` route t
 | `/adapt` | Responsive design, breakpoints, fluid layouts, touch targets. |
 | `/onboard` | First-run experiences, empty states, getting users to value fast. |
 
+## Contributing / Developing
+
+Skills live in `source/skills/`. Edit them there — a pre-commit hook automatically copies everything to `.claude/skills/` and `.cursor/skills/` when you commit. After cloning, run the hook installer once:
+
+```
+bash scripts/install-hooks.sh
+```
+
+You can also sync manually anytime with `bash scripts/build.sh`.
+
 ## Keeping Skills Up to Date
 
 The review and refinement skills are synced from [pbakaus/impeccable](https://github.com/pbakaus/impeccable). A GitHub Action checks for upstream changes every Monday and opens a PR if anything's new. You can also sync manually:
