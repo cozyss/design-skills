@@ -37,7 +37,7 @@ The user asks to audit `design.md` or a page against Apple HIG ("audit my design
 
 ## Routing
 
-Analyze the request and invoke the matching module. For broad requests, invoke in order: foundations, then patterns, then components.
+Analyze the request and invoke the matching module. For broad requests, invoke in order: foundations, then patterns, then components. When the request involves text, copy, or how to word things, also invoke `/write`.
 
 ### `/hig-foundations`
 Visual foundations (color, typography, spacing, layout, motion, accessibility, dark mode, icons, images, inclusion, RTL, writing, branding, materials), platform adaptation (responsive, mobile vs desktop, touch vs pointer), input methods (gestures, keyboard, pointer, focus), design system tokens.
@@ -47,6 +47,9 @@ User flows (navigation, modality, onboarding, launching, search), data interacti
 
 ### `/hig-components`
 Actions (buttons, menus, toggles, toolbars), layout (lists, tables, tabs, sidebars, disclosure), input (text fields, pickers, sliders, segmented controls), presentation (alerts, popovers, sheets, scroll views), status (progress, gauges), data visualization (charts, graphs).
+
+### `/write`
+Any text the user will read — button labels, error messages, empty states, onboarding copy, descriptions, tooltips, form labels, confirmation dialogs. Invoke when the request involves writing new copy or when a component/pattern recommendation includes text that needs to be written well.
 
 ## After Module Completion
 

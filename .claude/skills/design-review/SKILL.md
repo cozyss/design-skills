@@ -35,6 +35,7 @@ For broad reviews, quickly assess the UI across these dimensions. You're not doi
 | Bad spacing, monotonous grid, weak visual hierarchy | `/arrange` |
 | Overcrowded, too many elements, unnecessary complexity | `/distill` |
 | Unclear labels, bad error messages, confusing copy | `/clarify` |
+| Copy that's verbose, hedging, abstract, or lifeless | `/write` |
 | No hover/focus states, missing transitions, feels static | `/animate` |
 | Functional but forgettable, no personality | `/delight` |
 | Safe, generic, visually bland | `/bolder` |
@@ -102,13 +103,16 @@ These skills frequently go together. When one is needed, consider whether its co
 `/bolder` → `/delight` → `/animate`
 
 **"Simplify this"**
-`/distill` → `/clarify` → `/arrange`
+`/distill` → `/clarify` → `/write` → `/arrange`
 
 **"Design system cleanup"**
 `/normalize` → `/extract` → `/polish`
 
 **"Pre-launch polish"**
 `/audit` → `/harden` → `/polish`
+
+**"Fix the copy"**
+`/clarify` → `/write` → `/polish`
 
 **"Tone it down"**
 `/quieter` → `/typeset` → `/polish`
@@ -121,7 +125,7 @@ When running multiple skills, order matters:
 2. **System alignment** — `/normalize`, `/extract` (align to tokens and patterns)
 3. **Visual refinement** — `/typeset`, `/colorize`, `/bolder` or `/quieter` (style changes)
 4. **Interaction layer** — `/animate`, `/delight` (motion and personality)
-5. **Copy and content** — `/clarify`, `/onboard` (text changes)
+5. **Copy and content** — `/clarify`, `/write`, `/onboard` (text changes)
 6. **Hardening** — `/harden`, `/optimize` (resilience and performance)
 7. **Final pass** — `/polish` (always last — it catches whatever's left)
 
